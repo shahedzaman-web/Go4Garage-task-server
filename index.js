@@ -21,7 +21,7 @@ const { Vendor } = require("./Model/vendor");
 const { ProductList } = require("./Model/productList");
 app.use(bodyParser.json());
 
-app.post("/user/list", (req, res) => {
+app.post("/user/addProduct", (req, res) => {
   var productList = new ProductList({
     Title: req.body.Title,
     Description: req.body.Description,
