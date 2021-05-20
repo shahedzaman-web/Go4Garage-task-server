@@ -54,7 +54,7 @@ app.post("/user/register", (req, res) => {
 app.post("/user/login", (req, res) => {
   User.findOne({ email: req.body.email })
     .then((user) => {
-      if (!user) res.json({ message: "invalid credentials" });
+      if (!user) res.status(202).json({ message: "invalid credentials" });
       else {
         user.comparePassword(
           req.body.password,
@@ -68,7 +68,6 @@ app.post("/user/login", (req, res) => {
         );
       }
     })
-
     .catch((error) => {
       res.status(500).json(error);
     });
@@ -87,7 +86,7 @@ app.post("/vendor/register", (req, res) => {
 app.post("/vendor/login", (req, res) => {
   Vendor.findOne({ email: req.body.email })
     .then((vendor) => {
-      if (!vendor) res.json({ message: "invalid credentials" });
+      if (!vendor) res.status(202).json({ message: "invalid credentials" });
       else {
         vendor.comparePassword(
           req.body.password,
